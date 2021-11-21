@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+ 
+
+int A[100];  //100 elemanlı dizi oluşturuyoruz
+int key;  //integer tipinde key değişkeni oluşturuyoruz
+void ekleSirala (int A[], int elemanSayisi){  //EkleSırala metodumuz var bu metot A dizisi ve elemanSayısı değişkenlerinden oluşuyor
+
+  int i,j; // integer tipinde i ve j değişkeni tanımlıyoruz
+
+  for (i=0;i<elemanSayisi;i++){ //i yi 0 dan başlatıp tek tek artırıyoruz.
+
+    key = A[i];  //key değişkenine A dizisindeki değeri atıyoruz
+    j = i - 1 ; //bir önceki indisi almak için i değerinin 1 eksiğini alıyoruz. Key değerinin solu sıralı olacaktır.
+
+   
+   
+    //kaydırma işlemi için While döngüsü
+
+    while (key < A[j] && j >=0) {  //key A dizisi elemanlarından büyük ve j 0 a eşit veya büyük olduğu sürece;
+
+    A[j+1] = A[j]; //birer tane kaydı
+    j--;
+
+    }
+
+  A[j+1] = key; //araya sokma işlemi
+  }
+}
+
+int main(){  //ana metodumuzu oluşturuyoru
+  int i, adet;   //integer tipinde i ve adet oluşturulur
+  printf("\nDizi kac elemanli?\n"); 
+  scanf("%d", &adet);  //dizi adet sayısı belirlenir
+	
+  for(i=0; i<adet; i++){  //i sayısı adet kadar dönecek
+    printf("\n%d. sayiyi giriniz: ",i+1); //belirtilen eleman sayıları girilir
+    scanf("%d", &A[i]); //girilen elemanlar belirlenir
+  }
+
+  ekleSirala(A,adet);  //en son elemanlar sıralanır
+	
+  for(i=0; i<adet; i++){  //sıralanan elamanlar döndürülür
+    printf(" %d ", A[i]); // en son bir dizi içeriisnde ekrana yazıdırlır
+  }
+	
+  return 0;	 // program hatasız sonlandırılır
+} 
